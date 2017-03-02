@@ -1,4 +1,4 @@
-# KRL
+# KernelizedRankLearning
 Kernelized rank learning for personalized drug recommendation. 
 
 ## Dependencies
