@@ -6,9 +6,9 @@ from KRL import KRL_fit, KRL_pred
 
 # Load example data
 data = np.load('example.npz')
-# X is the Gene expression data, nPatient X nGene
+# X is the gene expression data, nPatient X nGene
 X = data['X']
-# Y is the drug response data, nPatient X nDrug, Y suppose to be sparse
+# Y is the drug response data, nPatient X nDrug, Y is supposed to be sparse
 Y = data['Y']
 
 # Optimize NDCG@k
