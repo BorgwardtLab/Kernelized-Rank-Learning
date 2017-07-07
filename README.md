@@ -30,4 +30,18 @@ Output:
     Y_pred:  a n2 X m matrix of n2 samples and m drugs
 
 ## Reproduce the experiments
-bash run_exp.sh
+Download and preprocess the dataset
+    
+    python dataset.py URLs_to_GDSC_datasets.txt
+    
+Prepare the sampled dataset    
+
+    python prepare.py config.yaml
+    
+Run experiments for KRL, LKRL, KRR, EN and RF   
+
+    python exp.py config.yaml
+    
+Run experiments for KBMTL
+
+    matlab -nodisplay -nosplash -nodesktop -r "run_KBMTL('config.yaml')"
