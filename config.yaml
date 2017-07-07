@@ -1,0 +1,40 @@
+# "analysis" takes one of FULL, SAMPLE, KEEPK
+analysis: SAMPLE
+# "data" takes one of GEX, WES, CNV, METH
+data: WES
+# "methods" takes a subset of KRL, LKRL, KBMTL, KRR, RF, EN
+methods: [KRL, LKRL, KBMTL, KRR, RF, EN]
+# methods: [LKRL]
+# k-fold cross validation
+cv: 3
+
+# seed: [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
+seed: [10000]
+# sample_ratio: [0.5, 0.2, 0.1]
+sample_ratio: [0.1]
+# keepk_ratio: [1.0, 0.5, 0.2, 0.1]
+keepk_ratio: [0.1]
+keepk: 5
+# "k_eval" is just for evaluation
+k_eval: [1, 3, 5, 10, 15, 20]
+
+# this is "k_optimized", we stated we used 10 for all experiments
+krl_k: 10
+krl_lambda: [0.1]
+krl_gamma: [0.1]
+
+lkrl_k: 10 
+lkrl_lambda: [10]
+
+kbmtl_alpha: [0.1]
+kbmtl_beta: [0.1]
+kbmtl_gamma: [0.1]
+
+krr_alpha: [0.1]
+krr_gamma: [0.1]
+
+rf_nestimators: [10]
+
+en_alpha: [0.1]
+en_l1ratio: [0.1]
+
