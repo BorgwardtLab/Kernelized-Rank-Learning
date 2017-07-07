@@ -29,5 +29,5 @@ Output:
 
     Y_pred:  a n2 X m matrix of n2 samples and m drugs
 
-## Reproduce all the experiments
+## Reproduce the experiments
 bash run_exp.sh
