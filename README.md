@@ -19,7 +19,7 @@ input:
     
     k:       an integer indicates the k in NDCG@k in training
     
-    lambda:  a float indictes the aregularization parameter
+    lambda:  a float indictes the regularization parameter
     
     gamma:   a float indicates the gamma in rbf kernel or 'linear' for linear kernel
     
