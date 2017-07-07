@@ -122,15 +122,15 @@ def main():
                     out['Y_train'] = Y_train_sample
                     out['Y_test'] = Y_test  
                     sio.savemat('%s/SAMPLE_Y_seed%s_cv%s_sr%s.mat' % (directory, seed, i, sr), out)
-                for j, (train_index, test_index) in enumerate(kf.split(Y_train)):
-                    Y_train = Y[train_index]                
-                    Y_test = Y[test_index]
-                    for sr in sample_ratio:
-                        Y_train_sample = sample(Y_train, sr)
-                        out = {}
-                        out['Y_train'] = Y_train_sample
-                        out['Y_test'] = Y_test  
-                        sio.savemat('%s/SAMPLE_Y_seed%s_cv%s.%s_sr%s.mat' % (directory, seed, i, j, sr), out)
+                    for j, (train_index, test_index) in enumerate(kf.split(Y_train)):
+                        Y_train = Y[train_index]                
+                        Y_test = Y[test_index]
+                        for sr in sample_ratio:
+                            Y_train_sample = sample(Y_train, sr)
+                            out = {}
+                            out['Y_train'] = Y_train_sample
+                            out['Y_test'] = Y_test  
+                            sio.savemat('%s/SAMPLE_Y_seed%s_cv%s.%s_sr%s.mat' % (directory, seed, i, j, sr), out)
 
     if analysis == 'KEEPK':
         for seed in seeds:
