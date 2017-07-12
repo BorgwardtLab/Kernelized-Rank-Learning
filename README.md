@@ -43,7 +43,8 @@ Run experiments for KRL, LKRL, KRR, EN and RF
     python exp.py config.yaml
     
 Run experiments for KBMTL
-
+    
+    bash prepare_KBMTL.sh
     matlab -nodisplay -nosplash -nodesktop -r "run_KBMTL"
     
 ## Contact
