@@ -44,7 +44,7 @@ Run experiments for KRL, LKRL, KRR, EN and RF
     
 Run experiments for KBMTL
 
-    matlab -nodisplay -nosplash -nodesktop -r "run_KBMTL('config.yaml')"
+    matlab -nodisplay -nosplash -nodesktop -r "run_KBMTL"
     
 ## Contact
 Any questions can be directed to:
