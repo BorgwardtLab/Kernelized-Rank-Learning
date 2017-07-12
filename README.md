@@ -50,4 +50,5 @@ Run experiments for KBMTL
 ## Contact
 Any questions can be directed to:
    * Xiao He: xiao.he [at] bsse.ethz.ch
+   * Lukas Folkman: lukas.folkman [at] bsse.ethz.ch
 
