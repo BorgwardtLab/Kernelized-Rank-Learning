@@ -29,7 +29,7 @@ Output:
 
     Y_pred:  n2 x m matrix of n2 samples and m drugs
 
-## Scripts for reproducing our experiments:
+## Scripts for reproducing our experiments
 Download and preprocess the GDSC dataset:
     
     python dataset.py URLs_to_GDSC_datasets.txt
@@ -59,7 +59,7 @@ Plot the results:
     
     jupyter notebook plots.ipynb
 
-## Analysis of the published results:
+## Analysis of the published results
 
 All results and configuration files for our paper are located in the folder ``paper/``. To re-analyze these results, a Jupyter notebook is provided:
     
