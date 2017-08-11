@@ -16,7 +16,7 @@ seeds: [30000, 20000]
 sample_ratios: [0.05, 0.1]
 # Subsampling as described in the KRL paper in Section 4.3 'Prediction using sparse training datasets biased towards effective therapies'
 keepk: 5
-keepk_ratios: [1.0, 0.2, 0.1]
+keepk_ratios: [1.0, 0.2]
 
 # evaluation parameter k in NDCG@k used for training KRL/LKRL
 # (we used 10 in the KRL paper)
@@ -30,12 +30,12 @@ k_evals: [5, 3]
 
 # ranges of hyper-parameter values optimized using grid search on the training set
 # (see Supplementary data of the KRL paper for details)
-krl_lambdas: [1, 0.001]
-krl_gammas: [0.1, 0.001]
+krl_lambdas: [0.001]
+krl_gammas: [0.001]
 lkrl_lambdas: [100]
-kbmtl_alphas: [0.1, 0.001]
-kbmtl_betas: [0.1, 0.001]
-kbmtl_gammas: [0.1, 0.001]
+kbmtl_alphas: [0.001]
+kbmtl_betas: [0.001]
+kbmtl_gammas: [0.001]
 krr_alphas: [0.001]
 krr_gammas: [0.001]
 rf_nestimators: [10]
