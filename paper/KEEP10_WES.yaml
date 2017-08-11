@@ -1,0 +1,49 @@
+# "analysis" takes one of FULL, SAMPLE, KEEPK
+analysis: KEEPK
+# "data" takes one of GEX, WES, CNV, MET
+data: WES
+# "methods" takes a subset of KRL, LKRL, KBMTL, KRR, RF, EN
+methods: [KRL, LKRL, KBMTL, KRR, RF, EN]
+# k-fold cross validation
+# (we used 3 in the KRL paper )
+cv: 3
+
+# seeds for numpy.random to generate data train/test splits, CV folds, and subsampling
+# if more than one seed is specified, mean and standard devation of the results can be calculated
+# (we used [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000] in the KRL paper)
+seeds: [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
+# Subsampling as described in the KRL paper in Section 4.2 'Prediction using sparse training datasets'
+sample_ratios: [0.5, 0.2, 0.1]
+# Subsampling as described in the KRL paper in Section 4.3 'Prediction using sparse training datasets biased towards effective therapies'
+keepk: 10
+keepk_ratios: [1.0, 0.5, 0.2, 0.1]
+
+# evaluation parameter k in NDCG@k used for training KRL/LKRL
+# (we used 10 in the KRL paper)
+krl_k: 10 
+lkrl_k: 10 
+
+# evaluation parameter k in NDCG@k and Precision@k
+# "k_evals" is just for the evaluation of results, not for training KRL
+# (we used [1, 3, 5, 10, 15, 20] in the KRL paper)
+k_evals: [1, 3, 5, 10, 15, 20]
+
+# ranges of hyper-parameter values optimized using grid search on the training set
+# (see Supplementary data of the KRL paper for details)
+krl_lambdas: []
+krl_gammas: []
+lkrl_lambdas: []
+kbmtl_alphas: []
+kbmtl_betas: []
+kbmtl_gammas: []
+krr_alphas: []
+krr_gammas: []
+rf_nestimators: []
+en_alphas: []
+en_l1ratios: []
+
+# number of jobs to use in parallel for training KRL and LKRL
+njobs: 4
+# set TRUE/FALSE to show/hide training progress of KRL and LKRL
+verbose: FALSE
+

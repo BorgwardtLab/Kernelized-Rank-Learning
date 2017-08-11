@@ -9,6 +9,9 @@ import IPython as ip
 
 from sklearn.model_selection import KFold
 
+from misc import FULL, SAMPLE, KEEPK
+from misc import GEX, WES, CNV, METH
+
 def sample(Y_train, sample_ratio):
     Y_train_sample = np.copy(Y_train)
     for i in range(Y_train_sample.shape[0]):
@@ -47,15 +50,19 @@ def keepk_sample(Y_train, Y_test, keepk_ratio, keepk):
     return Y_train_keepk, Y_test_keepk   
 
 def main():
+    print 'Splitting the data for training and testing, creating folds for cross-validation...'
+
     config_file = sys.argv[1] 
     with open(config_file, 'r') as f:
         config = yaml.load(f)
-    seeds = np.array(config['seed'], dtype=int)
+    seeds = np.array(config['seeds'], dtype=int)
     analysis = config['analysis']
+    assert analysis in [FULL, SAMPLE, KEEPK], 'Unknown analysis type %s specified in the config file' % analysis
     data_name = config['data']
+    assert data_name in [GEX, WES, CNV, METH], 'Unknown data type %s specified in the config file' % data_name
     cv = config['cv']
-    sample_ratio = np.array(config['sample_ratio'], dtype=float)
-    keepk_ratio = np.array(config['keepk_ratio'], dtype=float)
+    sample_ratios = np.array(config['sample_ratios'], dtype=float)
+    keepk_ratios = np.array(config['keepk_ratios'], dtype=float)
     keepk = config['keepk']
 
     directory = '%s/data/%s' % (os.getcwd(), data_name)
@@ -91,7 +98,7 @@ def main():
     if not os.path.exists(directory):
         os.makedirs(directory)  
 
-    if analysis == 'FULL':
+    if analysis == FULL:
         for seed in seeds:
             kf = KFold(n_splits=cv, shuffle=True, random_state=seed)
             for i, (train_index, test_index) in enumerate(kf.split(Y)):
@@ -109,11 +116,11 @@ def main():
                     out['Y_test'] = Y_test                     
                     sio.savemat('%s/FULL_Y_seed%s_cv%s.%s.mat' % (directory, seed, i, j), out)     
 
-    if analysis == 'SAMPLE':
+    if analysis == SAMPLE:
         for seed in seeds:
             np.random.seed(seed)
             kf = KFold(n_splits=cv, shuffle=True, random_state=seed)
-            for sr in sample_ratio:
+            for sr in sample_ratios:
                 for i, (train_index, test_index) in enumerate(kf.split(Y)):
                     Y_train = Y[train_index]                
                     Y_test = Y[test_index]
@@ -125,35 +132,34 @@ def main():
                     for j, (train_index, test_index) in enumerate(kf.split(Y_train)):
                         Y_train = Y[train_index]                
                         Y_test = Y[test_index]
-                        for sr in sample_ratio:
-                            Y_train_sample = sample(Y_train, sr)
-                            out = {}
-                            out['Y_train'] = Y_train_sample
-                            out['Y_test'] = Y_test  
-                            sio.savemat('%s/SAMPLE_Y_seed%s_cv%s.%s_sr%s.mat' % (directory, seed, i, j, sr), out)
+                        Y_train_sample = sample(Y_train, sr)
+                        out = {}
+                        out['Y_train'] = Y_train_sample
+                        out['Y_test'] = Y_test  
+                        sio.savemat('%s/SAMPLE_Y_seed%s_cv%s.%s_sr%s.mat' % (directory, seed, i, j, sr), out)
 
-    if analysis == 'KEEPK':
+    if analysis == KEEPK:
         for seed in seeds:
             np.random.seed(seed)
             kf = KFold(n_splits=cv, shuffle=True, random_state=seed)
-            for kr in keepk_ratio:
+            for kr in keepk_ratios:
                 for i, (train_index, test_index) in enumerate(kf.split(Y)):
-                    Y_train = Y[train_index]                
+                    Y_train = Y[train_index]
                     Y_test = Y[test_index]
-                    Y_train_keepk, Y_test_keepk = keepk_sample(Y_train, Y_test, kr, keepk)    
+                    Y_train_keepk, Y_test_keepk = keepk_sample(Y_train, Y_test, kr, keepk)
                     out = {}
                     out['Y_train'] = Y_train_keepk
                     out['Y_test'] = Y_test_keepk  
-                    sio.savemat('%s/KEEPK_Y_seed%s_cv%s_kr%s.mat' % (directory, seed, i, kr), out)  
+                    sio.savemat('%s/KEEPK_Y_seed%s_cv%s_kr%s_keep%s.mat' % (directory, seed, i, kr, keepk), out)  
                     for j, (train_index, test_index) in enumerate(kf.split(Y_train)):
-                        Y_train = Y[train_index]                
-                        Y_test = Y[test_index]    
-                        for kr in keepk_ratio:
-                            Y_train_keepk, Y_test_keepk = keepk_sample(Y_train, Y_test, kr, keepk)    
-                            out = {}
-                            out['Y_train'] = Y_train_keepk
-                            out['Y_test'] = Y_test_keepk  
-                            sio.savemat('%s/KEEPK_Y_seed%s_cv%s.%s_kr%s.mat' % (directory, seed, i, j, kr), out)  
+                        Y_train = Y[train_index]
+                        Y_test = Y[test_index]
+                        Y_train_keepk, Y_test_keepk = keepk_sample(Y_train, Y_test, kr, keepk)
+                        out = {}
+                        out['Y_train'] = Y_train_keepk
+                        out['Y_test'] = Y_test_keepk
+                        sio.savemat('%s/KEEPK_Y_seed%s_cv%s.%s_kr%s_keep%s.mat' % (directory, seed, i, j, kr, keepk), out)
+    print 'Finished.'
 
 if __name__ == '__main__':
     main()

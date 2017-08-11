@@ -24,7 +24,7 @@ def solve_Wt_kernel(A, b, t, Lambda, K_inv):
         Wt[:, i] = np.dot(u[:, i], K_inv)
     return Wt    
 
-def bmrm_kernel(W0, loss, loss_gradient, args, Lambda, K, K_inv, FTOL=1e-4, MAX_ITER=1000):
+def bmrm_kernel(W0, loss, loss_gradient, args, Lambda, K, K_inv, FTOL=1e-4, MAX_ITER=1000, verbose=True):
     [n, m] = W0.shape
     W = np.zeros([MAX_ITER, n, m])
     W[0] = W0
@@ -42,7 +42,7 @@ def bmrm_kernel(W0, loss, loss_gradient, args, Lambda, K, K_inv, FTOL=1e-4, MAX_
         b[t+1] = b[t+1] - np.multiply(A[t+1], W[t]).sum()
         fval_lb_t = np.multiply(A[t], W[t]).sum() + b[t] + reg
         epsilon = (fval[0:t+1] - fval_lb_t).min()
-        print "Epsilon iter %s: %s" % (t, epsilon)
+        if verbose: print "Epsilon iter %s: %s" % (t, epsilon)
         if epsilon < FTOL:
             break       
     return W[t]        

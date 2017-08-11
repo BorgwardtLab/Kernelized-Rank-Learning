@@ -83,7 +83,7 @@ def ndcgk_row_loss(W, X, Y, k, Notnan, njobs):
 
     return l
 
-def KRL_fit(X, Y, k, Lambda, gamma, njobs):
+def KRL_fit(X, Y, k, Lambda, gamma, njobs, verbose=True):
     if gamma == 'linear':
         K = linear_kernel(X)
     else:
@@ -99,7 +99,7 @@ def KRL_fit(X, Y, k, Lambda, gamma, njobs):
 
     np.random.seed(0)
     W = 0.01*np.random.randn(p, m)
-    W = bmrm_kernel(W, ndcgk_row_loss, ndcgk_row_loss_gradient, (K, Y, k, Notnan_row, njobs), Lambda, K, K_inv, MAX_ITER=1000)
+    W = bmrm_kernel(W, ndcgk_row_loss, ndcgk_row_loss_gradient, (K, Y, k, Notnan_row, njobs), Lambda, K, K_inv, MAX_ITER=1000, verbose=verbose)
     W = W.reshape([p, m])   
 
     return W
@@ -111,8 +111,8 @@ def KRL_pred(W, X_train, X_test, gamma):
         K = rbf_kernel(X_test, X_train, gamma=gamma)
     return np.dot(K, W)
 
-def KRL(X_train, Y_train, X_test, k, Lambda, gamma, njobs):
-    W = KRL_fit(X_train, Y_train, k, Lambda, gamma, njobs)
+def KRL(X_train, Y_train, X_test, k, Lambda, gamma, njobs, verbose=True):
+    W = KRL_fit(X_train, Y_train, k, Lambda, gamma, njobs, verbose)
     Y_pred = KRL_pred(W, X_train, X_test, gamma)
     return Y_pred
 

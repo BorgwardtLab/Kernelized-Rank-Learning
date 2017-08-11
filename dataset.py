@@ -30,6 +30,8 @@ def intersect_index(list1, list2):
     return merged
 
 def main():
+    print 'Downloading and preprocessing the GDSC dataset...'
+
     # Read URLs to GDSC datasets
     urls_file = sys.argv[1]
     urls = []
@@ -67,7 +69,6 @@ def main():
         GEX_cell_ids[i] = cell_id[5:]
     GEX = np.array(GEX.as_matrix(), dtype=np.float).T
 
-
     # Read Exome sequencing dataset
     WES_file = '%s/CellLines_CG_BEMs/PANCAN_SEQ_BEM.txt' % directory
     WES = pd.read_csv(WES_file, sep='\t')
@@ -75,7 +76,6 @@ def main():
     WES = WES.drop(['CG'], axis=1)
     WES_cell_ids = np.array(WES.columns, dtype='str')
     WES = np.array(WES.as_matrix(), dtype=np.int).T
-
 
     # Read Copy number dataset
     CNV_file = '%s/CellLine_CNV_BEMs/PANCAN_CNA_BEM.rdata.txt' % directory
@@ -85,7 +85,6 @@ def main():
     CNV_cna = np.array(CNV.columns, dtype='str')
     CNV = np.array(CNV.as_matrix(), dtype=int)
 
-
     # Read Methylation dataset
     MET_file = '%s/METH_CELLLINES_BEMs/PANCAN.txt' % directory
     MET = pd.read_csv(MET_file, sep='\t')
@@ -93,7 +92,6 @@ def main():
     MET = MET.drop(['Unnamed: 0'], axis=1)
     MET_cell_ids = np.array(MET.columns, dtype='str')
     MET = np.array(MET.as_matrix(), dtype=int).T
-
 
     # Read LOG_IC50 dataset
     IC50_file = '%s/TableS4A.xlsx' % directory
@@ -114,7 +112,6 @@ def main():
             if j > 1:
                 if cell.value != 'NA':
                     IC50[i-7, j-2] = cell.value
-
 
     # Read LOG_IC50 Threshold
     threshold_file = '%s/TableS5C.xlsx' % directory
@@ -155,6 +152,7 @@ def main():
     GEX_cell_ids = GEX_cell_ids[GEX_keep_index]
     IC50 = IC50_norm[IC50_keep_index]
     np.savez('%s/GDSC_GEX.npz' % directory, X=GEX, Y=IC50, cell_ids=GEX_cell_ids, drug_ids=IC50_drug_ids, GEX_gene_symbols=GEX_gene_symbols)
+    print 'Gene expression (GEX) dataset: {} cell lines, {} features, {} drugs'.format(GEX.shape[0], GEX.shape[1], IC50.shape[1])
 
 
     # Save the WES features and normalized IC50 dataset
@@ -165,6 +163,7 @@ def main():
     WES_cell_ids = WES_cell_ids[WES_keep_index]
     IC50 = IC50_norm[IC50_keep_index]
     np.savez('%s/GDSC_WES.npz' % directory, X=WES, Y=IC50, cell_ids=WES_cell_ids, drug_ids=IC50_drug_ids, WES_CG=WES_CG)
+    print 'Whole-exome sequencing (WES) dataset: {} cell lines, {} features, {} drugs'.format(WES.shape[0], WES.shape[1], IC50.shape[1])
 
 
     # Save the CNV features and normalized IC50 dataset
@@ -175,6 +174,7 @@ def main():
     CNV_cell_ids = CNV_cell_ids[CNV_keep_index]
     IC50 = IC50_norm[IC50_keep_index]
     np.savez('%s/GDSC_CNV.npz' % directory, X=CNV, Y=IC50, cell_ids=CNV_cell_ids, drug_ids=IC50_drug_ids, CNV_cna=CNV_cna)
+    print 'Copy number variation (CNV) dataset: {} cell lines, {} features, {} drugs'.format(CNV.shape[0], CNV.shape[1], IC50.shape[1])
 
 
     # Save the MET features and normalized IC50 dataset
@@ -185,6 +185,10 @@ def main():
     MET_cell_ids = MET_cell_ids[MET_keep_index]
     IC50 = IC50_norm[IC50_keep_index]
     np.savez('%s/GDSC_MET.npz' % directory, X=MET, Y=IC50, cell_ids=MET_cell_ids, drug_ids=IC50_drug_ids, MET_met=MET_met)
+    print 'Methylation (MET) dataset: {} cell lines, {} features, {} drugs'.format(MET.shape[0], MET.shape[1], IC50.shape[1])
+
+
+    print 'Finished.'
 
 if __name__ == '__main__':
     main()
