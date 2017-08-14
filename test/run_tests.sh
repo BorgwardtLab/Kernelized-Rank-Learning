@@ -3,7 +3,7 @@
 python dataset.py URLs_to_GDSC_datasets.txt
 bash prepare_KBMTL.sh
 
-for analysis in "KEEPK" "SAMPLE" #"FULL"
+for analysis in "KEEPK" "SAMPLE"
 do
 	cp test/${analysis}_config.yaml config.yaml
 	python prepare.py config.yaml
@@ -11,6 +11,4 @@ do
 	matlab -nodisplay -nosplash -nodesktop -r "run_KBMTL"
 	python results.py config.yaml > ${analysis}_results.txt
 done
-
-#jupyter notebook plots.ipynb
 
