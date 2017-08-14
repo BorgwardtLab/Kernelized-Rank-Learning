@@ -1,11 +1,14 @@
 # Kernelized-Rank-Learning
-Kernelized rank learning for personalized drug recommendation. 
+
+Kernelized Rank Learning (KRL) for Personalized Drug Recommendation
 
 ## Dependencies
-**Python 2.7**, modern versions of **numpy**, **scipy**, **scikit-learn**, **joblib**, **cvxopt**, **pandas**, **matplotlib**, **seaborn**, **openpyxl**, **gzip**. All of them available via **pip**.
+
+**Python** (2.7.12); for the KRL method: **numpy** (1.13.1), **scipy** (0.19.1), **scikit-learn** (0.18.1), **joblib** (0.11), **cvxopt** (1.1.9); for reproducing our experiments: **PyYAML** (3.12), **openpyxl** (2.4.8); for analysing the results: **Jupyter** (4.3.0), **pandas** (0.20.3), **matplotlib** (2.0.2), **seaborn** (0.7.1). All of the packages are available via **pip** (9.0.1). Tested on **Ubuntu** (16.04).
 
 ## KRL usage
-The implementation of KRL is in KRL/KRL.py
+
+The implementation of KRL is in ``KRL/KRL.py``:
 
     Y_pred = KRL(X_train, Y_train, X_test, k, lambda, gamma, njobs)
 
@@ -23,13 +26,14 @@ Input:
     
     gamma:   a float indicating the width of the RBF kernel or 'linear' for linear kernel
     
-    njobs:   an integer indicating the number of cores that will be used for parallization
+    njobs:   an integer indicating the number of cores that will be used for parallelization
 
 Output:
 
     Y_pred:  n2 x m matrix of n2 samples and m drugs
 
 ## Scripts for reproducing our experiments
+
 Download and preprocess the GDSC dataset:
     
     python dataset.py URLs_to_GDSC_datasets.txt
@@ -65,8 +69,19 @@ All results and configuration files for our paper are located in the folder ``pa
     
     jupyter notebook plots.ipynb
 
+
+## Installation tests
+
+Run tests and compare the results (takes approx. one hour on a desktop computer):
+
+    bash test/run_tests.sh
+    diff KEEPK_results.txt test/KEEPK_results.txt
+    diff SAMPLE_results.txt test/SAMPLE_results.txt 
+
 ## Contact
+
 Any questions can be directed to:
+
    * Xiao He: xiao.he [at] bsse.ethz.ch
    * Lukas Folkman: lukas.folkman [at] bsse.ethz.ch
 
