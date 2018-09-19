@@ -1,6 +1,8 @@
 # Kernelized-Rank-Learning (KRL)
 
-He&ast X, Folkman&ast L & Borgwardt K (2018), **Kernelized rank learning for personalized drug recommendation**, [*Bioinformatics*, **34**(16), 2808–2816](http://doi.org/10.1093/bioinformatics/bty132)
+He* X, Folkman* L & Borgwardt K (2018): **Kernelized rank learning for personalized drug recommendation**  
+[*Bioinformatics*, **34**(16), 2808–2816](http://doi.org/10.1093/bioinformatics/bty132)  
+*equal contributions
 
 ## Dependencies
 
@@ -50,7 +52,7 @@ Run experiments for KRL, LKRL, KRR, EN and RF:
 
     python exp.py config.yaml
     
-Run experiments for KBMTL (https://github.com/mehmetgonen/bmtmkl). The code below was tested using Matlab R2016b. Execute this only if KBMTL was specified in the configuration file:
+Run experiments for [KBMTL](https://github.com/mehmetgonen/bmtmkl). The code below was tested using Matlab R2016b. Execute this only if KBMTL was specified in the configuration file:
     
     bash prepare_KBMTL.sh
     matlab -nodisplay -nosplash -nodesktop -r "run_KBMTL"
