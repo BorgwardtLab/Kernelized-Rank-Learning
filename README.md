@@ -1,6 +1,6 @@
-# Kernelized-Rank-Learning
+# Kernelized-Rank-Learning (KRL)
 
-Kernelized Rank Learning (KRL) for Personalized Drug Recommendation
+He&ast X, Folkman&ast L & Borgwardt K (2018), **Kernelized rank learning for personalized drug recommendation**, [*Bioinformatics*, **34**(16), 2808–2816](http://doi.org/10.1093/bioinformatics/bty132)
 
 ## Dependencies
 
@@ -83,5 +83,5 @@ Run tests and compare the results (takes approx. one hour on a desktop computer)
 Any questions can be directed to:
 
    * Xiao He: xiao.he [at] bsse.ethz.ch
-   * Lukas Folkman: lukas.folkman [at] bsse.ethz.ch
+   * [Lukas Folkman](https://lukas-folkman.github.io/): lukas.folkman [at] bsse.ethz.ch
 
