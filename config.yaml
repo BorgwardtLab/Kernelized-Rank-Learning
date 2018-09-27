@@ -5,7 +5,7 @@ analysis: KEEPK
 # "data" takes one of GEX, WES, CNV, MET
 data: GEX
 # "methods" takes a subset of KRL, LKRL, KBMTL, KRR, RF, EN
-methods: [KRL, KRR]
+methods: [KRL, LKRL, KRR, RF, EN]
 # k-fold cross validation
 # (we used cv: 3 in the KRL paper )
 cv: 3
@@ -13,7 +13,7 @@ cv: 3
 # seeds for numpy.random to generate data train/test splits, CV folds, and subsampling
 # if more than one seed is specified, mean and standard devation of the results can be calculated
 # (we used seeds: [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000] in the KRL paper)
-seeds: [10000]
+seeds: [10000, 20000]
 # Subsampling as described in the KRL paper in Section 4.2 'Prediction using sparse training datasets'
 # (we used sample_ratios: [0.5, 0.2, 0.1] in the KRL paper)
 sample_ratios: [0.1, 0.05]
