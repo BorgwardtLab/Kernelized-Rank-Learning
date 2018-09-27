@@ -120,7 +120,7 @@ def plot_distro(data, data_descriptor=None, ax=None, grid_columns=None, x_tics=N
 			if variable not in data: raise PlotsError(message='You specified order for %s but your data does not contain %s' % (variable, variable))
 			set_variable = set(data[variable])
 			if len(my_order) != len(set_variable) or set(my_order) != set_variable: raise PlotsError(message='The specified order does not match %s' % variable)
-	if ci is not None and ci != 'std' and not callable(ci) and (ci < 0 or ci > 100): raise PlotsError(message='"ci" must be None or within 0 and 100')
+	if ci is not None and ci != 'sd' and not callable(ci) and (ci < 0 or ci > 100): raise PlotsError(message='"ci" must be None or within 0 and 100')
 	
 	#if (swarm or strip) and 'hue' in data: raise PlotsError(message='Swarmplot is not supported when plotting plots with hue.')
 	if colours is not None:

@@ -82,7 +82,7 @@ def rank_info(relative_ranks, method, seed, ratio, debug=False, delim=' '):
 
 def get_result_filename(method, analysis, data_name, seed, fold1, fold2=-1, keepk=None, ratio=None, params=None):
     if analysis == FULL: assert ratio == 1
-    directory_method = '{}/result/{}/{}/{}'.format(os.getcwd(), data_name, analysis, method)
+    directory_method = '{}/results/{}/{}/{}'.format(os.getcwd(), data_name, analysis, method)
 
     if method in BASELINES:
         assert fold2 == -1 and params is None

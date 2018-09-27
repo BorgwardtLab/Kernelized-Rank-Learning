@@ -2,51 +2,78 @@
 # KRL: DATASETS #
 #################
 
-# All datasets were downloaded from the GDSC website: www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/
-
 ##
 # DRUG SENSITIVITY LOG_IC50 DATASET (TableS4A.xlsx)
 ##
 
-http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources//Data/suppData/TableS4A.xlsx
+http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/suppData/TableS4A.xlsx
 
 ##
 # BINARIZATION/NORMALIZATION LOG_IC50 THRESHOLDS (TableS5C.xlsx)
 ##
 
-http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources//Data/suppData/TableS5C.xlsx
+http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/suppData/TableS5C.xlsx
 
 ##
 # LIST OF SCREENED COMPOUNDS FOR DRUG_ID MATCHING (TableS1F.xlsx)
 ##
 
-http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources//Data/suppData/TableS1F.xlsx
+http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/suppData/TableS1F.xlsx
 
 ##
 # GENE EXPRESSION DATASET (Cell_line_RMA_proc_basalExp.txt)
 # RMA-normalised basal expression profiles (17,737 genes) for all the cell-lines
 ##
 
-http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources//Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip
+http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/preprocessed/Cell_line_RMA_proc_basalExp.txt.zip
 
 ##
 # EXOME SEQUENCING DATASET (CellLines_CG_BEMs/PANCAN_SEQ_BEM.txt)
 # Binary event matrix (BEM) encoding if the given cell line carried variants in recurrently mutated sites of one of the 300 candidate cancer genes (CGs) identified in the analyses of 6,815 patient tumors
 ##
 
-http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources//Data/BEMs/CellLines/CellLines_CG_BEMs.zip
+http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/BEMs/CellLines/CellLines_CG_BEMs.zip
 
 ##
 # COPY NUMBER VARIATION DATASET (CellLine_CNV_BEMs/PANCAN_CNA_BEM.rdata.txt)
 # Binary event matrix (BEM) encoding if the given cell line carried one of the 425 recurrently aberrant copy number segments (RACSs) identified in the analyses of 8,014 patient tumors
 ## 
 
-http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources//Data/BEMs/CellLines/CellLines_CNV_BEMs.zip
+http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/BEMs/CellLines/CellLines_CNV_BEMs.zip
 
 ##
 # METHYLATION DATASET (METH_CELLLINES_BEMs/PANCAN.txt)
 # Binary event matrix (BEM) encoding if the given cell line carried one of the 378 hypermethylated informative CpG islands (iCpGs) located in gene promoters identified in the analyses of 6,166 patient tumors
 ##
 
-http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources//Data/BEMs/CellLines/CellLines_METH_BEMs.zip
+http://www.cancerrxgene.org/gdsc1000/GDSC1000_WebResources/Data/BEMs/CellLines/CellLines_METH_BEMs.zip
+
+##
+# CLINICAL TCGA ANNOTATIONS (TCGA_BRCA_clinical.csv.gz)
+# Processed clinical annotations for the TCGA breast cancer cohort
+##
+
+https://zenodo.org/record/1436549/files/TCGA_BRCA_clinical.csv.gz
+
+##
+# CLINICAL TRIALS AND TCGA DATASETS (pRRophetic_*)
+# Processed docetaxel and bortezomib clinical trials and TCGA breast cancer cohort datasets using Geeleher et al. (2014) and Geeleher et al. (2017) pipelines
+##
+
+https://zenodo.org/record/1436549/files/pRRophetic_docetaxel_GDSC_r2_samples.txt
+https://zenodo.org/record/1436549/files/pRRophetic_docetaxel_preds.csv.gz
+https://zenodo.org/record/1436549/files/pRRophetic_docetaxel_test_y.csv.gz
+https://zenodo.org/record/1436549/files/pRRophetic_docetaxel_testFrame.csv.gz
+https://zenodo.org/record/1436549/files/pRRophetic_docetaxel_trainFrame.csv.gz
+
+https://zenodo.org/record/1436549/files/pRRophetic_bortezomib_binary_test_y.csv.gz
+https://zenodo.org/record/1436549/files/pRRophetic_bortezomib_GDSC_r2_samples.txt
+https://zenodo.org/record/1436549/files/pRRophetic_bortezomib_preds.csv.gz
+https://zenodo.org/record/1436549/files/pRRophetic_bortezomib_test_y.csv.gz
+https://zenodo.org/record/1436549/files/pRRophetic_bortezomib_testFrame.csv.gz
+https://zenodo.org/record/1436549/files/pRRophetic_bortezomib_trainFrame.csv.gz
+
+https://zenodo.org/record/1436549/files/pRRophetic_TCGA_BRCA_preds.csv.gz
+https://zenodo.org/record/1436549/files/pRRophetic_TCGA_BRCA_testFrame.csv.gz
+https://zenodo.org/record/1436549/files/pRRophetic_TCGA_BRCA_trainFrame.csv.gz
 

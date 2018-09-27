@@ -52,15 +52,15 @@ def main():
     for method in methods:
         assert method in [KRL_STR, LKRL_STR, KBMTL_STR, KRR_STR, RF_STR, EN_STR], 'Unknown method {} specified in the config file'.format(method)
 
-    directory = '{}/result'.format(os.getcwd())
+    directory = '{}/results'.format(os.getcwd())
     if not os.path.exists(directory):
         os.makedirs(directory)       
 
-    directory = '{}/result/{}'.format(os.getcwd(), data_name)
+    directory = '{}/results/{}'.format(os.getcwd(), data_name)
     if not os.path.exists(directory):
         os.makedirs(directory)    
 
-    directory = '{}/result/{}/{}'.format(os.getcwd(), data_name, analysis)
+    directory = '{}/results/{}/{}'.format(os.getcwd(), data_name, analysis)
     if not os.path.exists(directory):
         os.makedirs(directory)      
 
