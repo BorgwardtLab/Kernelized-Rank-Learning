@@ -6,7 +6,6 @@ import yaml
 import argparse
 import numpy as np
 import scipy.io as sio 
-import IPython as ip
 
 from misc import read_FULL, read_KEEPK, read_SAMPLE
 from misc import FULL, SAMPLE, KEEPK

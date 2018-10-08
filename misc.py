@@ -3,7 +3,6 @@
 import os
 import numpy as np
 import scipy.io as sio 
-import IPython as ip
 import gzip
 import pandas as pd
 from sklearn.metrics.pairwise import euclidean_distances

@@ -5,7 +5,6 @@ import sys
 import yaml
 import numpy as np
 import scipy.io as sio
-import IPython as ip
 
 from sklearn.model_selection import KFold
 

@@ -6,7 +6,6 @@ import urllib2
 import zipfile
 import numpy as np
 import pandas as pd
-import IPython as ip
 from openpyxl import load_workbook
 from misc import intersect_index
 
